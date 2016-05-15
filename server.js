@@ -30,6 +30,7 @@ app.use(function*(next) {
         this.response.type = 'json'
         if (!!body.user && !!body.password) {
             this.body = {
+                username: body.user,
                 token: 'asdadasflasfaasda'
             }    
         } 
