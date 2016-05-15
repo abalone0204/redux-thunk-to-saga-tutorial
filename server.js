@@ -26,13 +26,18 @@ app.use(function*(next) {
         const body = yield parse(this, {
             textTypes: ['text']
         })
+        console.log('body====>',body);
+        console.log('typeof===>', typeof(body));
         yield delay(800)
         this.response.type = 'json'
-        if (!!body.user && !!body.password) {
-            this.body = {
-                username: body.user,
+        if (!!body.username && !!body.password) {
+            const result = {
+                username: body.username,
                 token: 'asdadasflasfaasda'
-            }    
+
+            }
+            console.log('result===>',result);
+            this.body = result
         } 
     } else {
         yield next;

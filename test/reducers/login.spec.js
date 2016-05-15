@@ -56,10 +56,12 @@ describe('Reducers/ login', () => {
     it('should handle login error', () => {
         expect(
             login(state, {
-                type: LOGIN_ERROR
+                type: LOGIN_ERROR,
+                error: 'error message'
             })
         ).toEqual({
-            status: 'error'
+            status: 'error',
+            error: 'error message'
         })
     })
 

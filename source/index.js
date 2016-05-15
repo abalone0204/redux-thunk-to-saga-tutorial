@@ -1,7 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import store from './store.js'
+import Root from './containers/Root.js'
 
 ReactDOM.render(
-    <h2>yyoyo</h2>,
+    <Root store={store}/>,
     document.getElementById('container')
 )
