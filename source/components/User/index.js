@@ -1,15 +1,16 @@
 import React from 'react'
-
+import CSSModules from 'react-css-modules'
+import styles from './styles.css'
 
 class User extends React.Component {
     render() {
         const {username, token} = this.props
         return (
-            <div>
-                <div>
+            <div styleName='user'>
+                <div styleName='info'>
                     username: {username}
                 </div>
-                <div>
+                <div styleName='info'>
                     token: {token}
                 </div>
             </div>
@@ -18,4 +19,4 @@ class User extends React.Component {
     }
 }
 
-export default User
+export default CSSModules(User, styles)

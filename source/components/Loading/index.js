@@ -1,7 +1,11 @@
 import React from 'react'
+import styles from './styles.css'
+import CSSModules from 'react-css-modules'
 
 const Loading = () => (
-    <div>loading</div>
+    <div styleName='loading'>
+        
+    </div>
     )
 
-export default Loading
+export default CSSModules(Loading, styles)

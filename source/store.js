@@ -11,4 +11,5 @@ const store = createStore(rootReducer,
   applyMiddleware(thunkMiddleware)
 )
 
+
 export default store

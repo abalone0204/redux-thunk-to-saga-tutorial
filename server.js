@@ -28,7 +28,7 @@ app.use(function*(next) {
         })
         console.log('body====>',body);
         console.log('typeof===>', typeof(body));
-        yield delay(800)
+        yield delay(2000)
         this.response.type = 'json'
         if (!!body.username && !!body.password) {
             const result = {

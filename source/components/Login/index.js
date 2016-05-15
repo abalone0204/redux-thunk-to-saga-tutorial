@@ -1,4 +1,6 @@
 import React from 'react'
+import CSSModules from 'react-css-modules'
+import styles from './styles.css'
 
 class Login extends React.Component {
     handleClick() {
@@ -21,13 +23,13 @@ class Login extends React.Component {
 
         return (
             <div>
-                <div>
+                <div styleName='username'>
                     <input ref='username' type="text" defaultValue='denny'/>
                 </div>
-                <div>
+                <div styleName='password'>
                     <input ref= 'password' type="password" defaultValue='1321313'/>
                 </div>
-                <button onClick={this.handleClick.bind(this)}>
+                <button styleName='btn' onClick={this.handleClick.bind(this)}>
                     login
                 </button>
             </div>
@@ -35,4 +37,4 @@ class Login extends React.Component {
     }
 }
 
-export default Login
+export default CSSModules(Login, styles)

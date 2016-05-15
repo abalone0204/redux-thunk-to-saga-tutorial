@@ -1,0 +1,38 @@
+$light-color: rgba(39, 204, 149, 0.3);
+$dark-color: rgba(39, 204, 149, 1);
+.loading {
+    position: absolute;
+    box-sizing: border-box;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    /*background: red;*/
+    width: 100px;
+    height: 100px;
+    border: solid 25px $light-color;
+    margin: 0 auto;
+    animation: loading 750ms linear infinite;
+}
+
+@keyframes loading {
+  0% {
+    border-color: $light-color;
+    border-top-color: $dark-color;
+  }
+  25% {
+    border-color: $light-color;
+    border-right-color: $dark-color;
+  }
+  50% {
+    border-color: $light-color;
+    border-bottom-color: $dark-color;
+  }
+  75% {
+    border-color: $light-color;
+    border-left-color: $dark-color;
+  }
+  100% {
+    border-color: $light-color;
+    border-top-color: $dark-color;
+  }
+}

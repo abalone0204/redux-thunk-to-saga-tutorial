@@ -5,7 +5,7 @@ import {
 import Login from '../components/Login'
 import Loading from '../components/Loading'
 import User from '../components/User'
-
+import Container from '../components/Container'
 import {loginFlow} from '../actions/login.js'
 
 class App extends React.Component {
@@ -13,19 +13,20 @@ class App extends React.Component {
         const {login, dispatch} = this.props 
         const {status, username, token,error} = login
         const boundLogin = ({username, password}) => dispatch(loginFlow({username, password}))
-        if (status ==='init') {
-            return <Login loginAction={boundLogin}/>    
-        }
-        if (status ==='loading') {
-            return <Loading/>
-        }
-        if (status ==='logined') {
-            return <User {...{username, token}}/>
-        }
-        if (status === 'error') {
-            return <div>{error}</div>
-        }
-        
+        return (
+        <Container>
+            {
+                status ==='init' ? 
+                    <Login loginAction={boundLogin}/> :
+                status ==='loading' ? 
+                    <Loading/> : 
+                status === 'logined' ? 
+                    <User {...{username, token}}/> :
+                status === 'error' ? 
+                    <div>{error}</div> : null
+            }
+        </Container>
+        )
     }
 }
 
