@@ -28,9 +28,11 @@ app.use(function*(next) {
         })
         yield delay(800)
         this.response.type = 'json'
-        this.body = {
-            token: 'asdadasflasfaasda'
-        }
+        if (!!body.user && !!body.password) {
+            this.body = {
+                token: 'asdadasflasfaasda'
+            }    
+        } 
     } else {
         yield next;
     }
