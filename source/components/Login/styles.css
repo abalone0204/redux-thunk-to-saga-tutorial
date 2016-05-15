@@ -33,7 +33,7 @@
     padding: 10px;
     background: transparent;
     width: 150px;
-    border: solid 1px #bcbcbc;
+    border: solid 3px #bcbcbc;
     border-radius: 5px;
     transition: all ease 0.5s;
     &:hover {
