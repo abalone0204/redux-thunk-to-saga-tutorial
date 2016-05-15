@@ -2,7 +2,7 @@
 
 var koa = require('koa');
 var app = koa();
-var port = process.env[2] || 8888;
+var port = process.env[2] || 8889;
 var send = require('koa-send');
 var serve = require('koa-static');
 var parse = require('co-body');
@@ -26,8 +26,6 @@ app.use(function*(next) {
         const body = yield parse(this, {
             textTypes: ['text']
         })
-        console.log('body====>',body);
-        console.log('typeof===>', typeof(body));
         yield delay(2000)
         this.response.type = 'json'
         if (!!body.username && !!body.password) {
@@ -36,7 +34,6 @@ app.use(function*(next) {
                 token: 'asdadasflasfaasda'
 
             }
-            console.log('result===>',result);
             this.body = result
         } 
     } else {
