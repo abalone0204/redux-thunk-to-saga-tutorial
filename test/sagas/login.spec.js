@@ -3,13 +3,20 @@ import {
     takeEvery
 } from 'redux-saga'
 import {
+    createMockTask
+} from 'redux-saga/utils'
+import {
     call,
-    put
+    put,
+    fork,
+    take,
+    cancel
 } from 'redux-saga/effects'
 import {
     LOGIN_REQUEST,
     LOGIN_SUCCESS,
-    LOGIN_ERROR
+    LOGIN_ERROR,
+    LOGIN_CANCEL
 } from '../../source/actions/login.js'
 
 import {
@@ -17,6 +24,7 @@ import {
 } from '../../source/API'
 import {
     watchRequestLogin,
+    authorize,
     loginFlow
 } from '../../source/sagas/login.js'
 
@@ -34,13 +42,40 @@ describe('Sagas/ login', () => {
         })
     })
     describe('loginFlow', () => {
-
         const generator = loginFlow({
             type: LOGIN_REQUEST,
             username: 'denny',
             password: '12345678'
         })
+        const task = createMockTask()
 
+        it('should fork a authorize test', () => {
+            const expected = fork(authorize, {
+                username: 'denny',
+                password: '12345678'
+            })
+            const actual = generator.next().value
+            assert.deepEqual(expected, actual)
+        })
+
+        it('should take cancel login action', () => {
+            const expected = take(LOGIN_CANCEL)
+            const actual = generator.next(task).value
+            assert.deepEqual(expected, actual)
+        })
+
+        it('should cancel the login task', () => {
+            const expected = cancel(task)
+            const actual = generator.next().value
+            assert.deepEqual(expected, actual)
+        })
+    })
+    describe('Authorize', () => {
+        const generator = authorize({
+            username: 'denny',
+            password: '12345678'
+        })
+        
         it('should call loginAPI', () => {
             const expected = call(loginAPI, {
                 username: 'denny',

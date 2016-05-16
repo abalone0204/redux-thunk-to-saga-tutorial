@@ -3,13 +3,17 @@ import {
 } from 'redux-saga'
 import {
     call,
-    put
+    put,
+    fork,
+    take,
+    cancel
 } from 'redux-saga/effects'
 
 import {
     LOGIN_REQUEST,
     LOGIN_SUCCESS,
-    LOGIN_ERROR
+    LOGIN_ERROR,
+    LOGIN_CANCEL
 } from '../actions/login.js'
 
 import {
@@ -20,11 +24,11 @@ export function* watchRequestLogin() {
     yield takeEvery(LOGIN_REQUEST, loginFlow)
 }
 
-export function* loginFlow(action) {
+export function* authorize({username, password}){
     try {
         const response = yield call(loginAPI, {
-            username: action.username,
-            password: action.password
+            username,
+            password
         })
         yield put({
             type: LOGIN_SUCCESS,
@@ -36,4 +40,10 @@ export function* loginFlow(action) {
             error
         })
     }
+}
+
+export function* loginFlow(action) {
+    const task = yield fork(authorize, {username:action.username, password: action.password})
+    yield take(LOGIN_CANCEL)
+    yield cancel(task)
 }
