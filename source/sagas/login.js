@@ -1,6 +1,7 @@
 import {
     takeEvery
-} from 'redux-saga/effects'
+} from 'redux-saga'
+
 import {
     LOGIN_REQUEST,
     LOGIN_SUCCESS,

@@ -9,6 +9,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "babel-polyfill": "^6.8.0",
     "co-body": "^4.2.0",
     "koa": "^1.2.0",
     "koa-send": "^3.2.0",
