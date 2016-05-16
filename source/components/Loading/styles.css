@@ -14,6 +14,20 @@ $dark-color: rgba(39, 204, 149, 1);
     animation: loading 750ms linear infinite;
 }
 
+.cancel {
+  cursor: pointer;
+  text-align: center;
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-bottom: 4px solid transparent;
+  transition: border-bottom 0.3s ease;
+  &:hover {
+    border-bottom: 4px solid $dark-color;
+  }
+}
+
 @keyframes loading {
   0% {
     border-color: $light-color;

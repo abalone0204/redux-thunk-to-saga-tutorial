@@ -6,20 +6,21 @@ import Login from '../components/Login'
 import Loading from '../components/Loading'
 import User from '../components/User'
 import Container from '../components/Container'
-import {loginRequest} from '../actions/login.js'
+import {loginRequest, loginCancel} from '../actions/login.js'
 
 class App extends React.Component {
     render() {
         const {login, dispatch} = this.props 
         const {status, username, token,error} = login
         const sendLoginRequest = ({username, password}) => dispatch(loginRequest({username, password}))
+        const cancel = () => dispatch(loginCancel())
         return (
         <Container>
             {
                 status ==='init' ? 
-                    <Login sendLoginRequest={sendLoginRequest}/> :
+                    <Login sendLoginRequest={sendLoginRequest} /> :
                 status ==='loading' ? 
-                    <Loading/> : 
+                    <Loading cancel={cancel}/> : 
                 status === 'logined' ? 
                     <User {...{username, token}}/> :
                 status === 'error' ? 
