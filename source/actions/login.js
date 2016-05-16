@@ -4,9 +4,11 @@ export const LOGIN_REQUEST = 'LOGIN_REQUEST'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_ERROR = 'LOGIN_ERROR'
 
-export function loginRequest() {
+export function loginRequest({username, password}) {
     return {
-        type: LOGIN_REQUEST
+        type: LOGIN_REQUEST,
+        username,
+        password
     }
 }
 
