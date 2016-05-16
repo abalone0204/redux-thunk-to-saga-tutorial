@@ -1,7 +1,8 @@
 import {
     LOGIN_REQUEST,
     LOGIN_SUCCESS,
-    LOGIN_ERROR
+    LOGIN_ERROR,
+    LOGIN_CANCEL
 } from '../actions/login.js'
 
 export default function login(state = {
@@ -9,20 +10,24 @@ export default function login(state = {
 }, action) {
     switch (action.type) {
         case LOGIN_REQUEST:
-            return Object.assign({}, state, {
+            return {
                 status: 'loading'
-            })
+            }
         case LOGIN_SUCCESS:
-            return Object.assign({}, state, {
+            return {
                 status: 'logined',
                 username: action.response.username,
                 token: action.response.token
-            })
+            }
         case LOGIN_ERROR:
-            return Object.assign({}, state,{
+            return {
                 status: 'error',
                 error: action.error
-            })
+            }
+        case LOGIN_CANCEL:
+            return {
+                status: 'init'
+            }
         default:
             return state
     }

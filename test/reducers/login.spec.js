@@ -4,7 +4,8 @@ import login from '../../source/reducers/login.js'
 import {
     LOGIN_REQUEST,
     LOGIN_SUCCESS,
-    LOGIN_ERROR
+    LOGIN_ERROR,
+    LOGIN_CANCEL
 } from '../../source/actions/login.js'
 
 
@@ -62,6 +63,16 @@ describe('Reducers/ login', () => {
         ).toEqual({
             status: 'error',
             error: 'error message'
+        })
+    })
+
+    it('shoudld handle login cancel',  ()=> {
+        expect(
+            login(state, {
+                type: LOGIN_CANCEL,
+            })
+        ).toEqual({
+            status: 'init'
         })
     })
 
