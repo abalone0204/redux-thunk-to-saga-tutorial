@@ -8,4 +8,4 @@
 
 - Or if you can read Chinses, just read my article which including the fully and simple introduction of saga 
 
- 
+    - [Saga Pattern 在前端的應用](http://abalone0204.github.io/2016/05/14/redux-saga/)
