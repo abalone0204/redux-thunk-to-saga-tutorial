@@ -9,18 +9,14 @@ class Login extends React.Component {
             password
         } = this.refs
         const {
-            loginAction
+            sendLoginRequest
         } = this.props
-        loginAction({
+        sendLoginRequest({
             username: username.value,
             password: password.value
         })
     }
     render() {
-        const {
-            loginAction
-        } = this.props
-
         return (
             <div>
                 <div styleName='username'>

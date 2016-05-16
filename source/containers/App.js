@@ -6,18 +6,18 @@ import Login from '../components/Login'
 import Loading from '../components/Loading'
 import User from '../components/User'
 import Container from '../components/Container'
-import {loginFlow} from '../actions/login.js'
+import {loginRequest} from '../actions/login.js'
 
 class App extends React.Component {
     render() {
         const {login, dispatch} = this.props 
         const {status, username, token,error} = login
-        const boundLogin = ({username, password}) => dispatch(loginFlow({username, password}))
+        const sendLoginRequest = ({username, password}) => dispatch(loginRequest({username, password}))
         return (
         <Container>
             {
                 status ==='init' ? 
-                    <Login loginAction={boundLogin}/> :
+                    <Login sendLoginRequest={sendLoginRequest}/> :
                 status ==='loading' ? 
                     <Loading/> : 
                 status === 'logined' ? 

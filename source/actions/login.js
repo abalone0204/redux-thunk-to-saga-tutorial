@@ -25,16 +25,3 @@ export function loginError(error) {
         error
     }
 }
-
-export function loginFlow({username, password}) {
-    return (dispatch) => {
-        dispatch(loginRequest())
-        loginAPI({username, password})
-            .then(response => {
-                dispatch(loginSucess(response))    
-            })
-            .catch(error => {
-                dispatch(loginError(error))
-            })
-    }
-}
